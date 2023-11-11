@@ -43,6 +43,9 @@ int main(){
     cin >> n >> m >> k >> q;
     
     string nCol; // Nombre de colonia
+    int x, y;
+    bool isCentral;
+    cin >> nCol >> x >> y >> isCentral;
     /*
     
     */
