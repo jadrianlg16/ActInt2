@@ -42,13 +42,15 @@ int main(){
     //q = futuras nuevas colonias que se desean conectar.
     cin >> n >> m >> k >> q;
     
-    string nCol; // Nombre de colonia
-    int x, y;
-    bool isCentral;
-    cin >> nCol >> x >> y >> isCentral;
-    /*
+
+    for (int i = 0; i< n; i++){
+        string nCol; // Nombre de colonia
+        int x, y;
+        bool isCentral;
+        cin >> nCol >> x >> y >> isCentral;
+    }
     
-    */
+    
 
 
     return 0;
