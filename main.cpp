@@ -6,8 +6,23 @@
 
 #include <iostream>
 #include <string>
+#include <queue>
+#include <vector>
 
 using namespace std;
+
+// data structures
+struct Colony{
+    string name;
+    int x, y;
+    bool isCentral;
+};
+struct Conexion{
+
+};
+
+
+
 
 // MST
 /*
