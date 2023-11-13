@@ -44,11 +44,33 @@ int main(){
     
 
     for (int i = 0; i< n; i++){
+
         string nCol; // Nombre de colonia
         int x, y;
         bool isCentral;
         cin >> nCol >> x >> y >> isCentral;
     }
+    
+    for (int i = 0; i< m; i++){
+        string conCol1;
+        string conCol2;
+        int cost;
+        cin >> conCol1 >> conCol2 >> cost; // cLen can input as null aka " "
+    
+    }
+
+
+    for (int i = 0; i< k; i++){
+        string conCol1;
+        string conCol2;
+        cin >> conCol1 >> conCol2; // cLen can input as null aka " "
+    }
+    for (int i = 0; i< q; i++){
+        string newCol;
+        int x, y;
+        cin >> newCol >> x >> y;
+    }
+
     
     
 
