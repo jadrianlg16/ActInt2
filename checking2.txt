@@ -1,0 +1,13 @@
+-------------------
+1 - Cableado óptimo de nueva conexión.
+test
+-------------------
+2 - La ruta óptima.
+test
+-------------------
+3 - Caminos más cortos entre centrales.
+test
+-------------------
+4 - Conexión de nuevas colonias.
+test
+-------------------

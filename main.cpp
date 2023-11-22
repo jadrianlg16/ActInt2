@@ -1,4 +1,4 @@
-// Integrantes
+// Integrantes:
 // Jesus Adrian Lopez Gaona A00835462
 // Danna Karina Gonzales A
 
@@ -8,6 +8,9 @@
 #include <string>
 #include <queue>
 #include <vector>
+#include <fstream>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -17,9 +20,12 @@ struct Colony{
     int x, y;
     bool isCentral;
 };
-struct Conexion{
-
+struct Conexion {
+    string colony1, colony2;
+    int cost;
+    bool isNewCabling; // Para saber si es del nuevo cableado
 };
+
 
 
 
@@ -28,23 +34,40 @@ struct Conexion{
 /*
 Deberá el programa debe desplegar cuál es la forma óptima de cablear con una nueva fibra óptica conectando colonias de tal forma que se pueda compartir información entre cuales quiera dos colonias en el menor costo pósible, aprovechando que ya existen conexiones del nuevo cableado (las cuales no deben incluir en el costo)
 */
+// find the Optimal Cabling
+string MST(const vector<Conexion>& conexiones) {
+    string test = "test";
+    return test;
+}
 
 // TSP Kurskal
 /*
 Debido a que las ciudades apenas están entrando al mundo tecnológico, se requiere que alguien visite cada colonia que "no son centrales" para ir a dejar estados de cuenta físicos, publicidad, avisos y notificaciones impresos. por eso se quiere saber ¿cuál es la ruta más corta posible que visita cada colonia exactamente una vez y al finalizar regresa a la colonia origen? Tomar en cuenta que muchas veces el costo mínimo puede pasar por una colonia central o más intermedias. El programa debe desplegar la ruta a considerar así como el costo.
 */
+string TSP(const vector<Colony>& colonies) {
+    string test = "test";
+    return test;
+}
 
 // Floyd-Warshall
 /*
 El programa deberá generar la ruta óptima para ir de todas las centrales entre si, se puede pasar por una colonia no central.
 */
+// find the s hortest path between central colonies
+string FloydWarshall(const vector<Colony>& colonies, const vector<Conexion>& conexiones) {
+    string test = "test";
+    return test;
+}
 
 
 //
 /*
 Se leera a continuación una serie de puntos cartecianos en el mapa de la ciudad en donde se planea conectar nuevas colonias, y se deberá decir cual es la colina y punto carteciano más cercano con el cual se debe conectar.
 */
-
+string connectNewColonies(const vector<Colony>& colonies, const vector<Colony>& newColonies) {
+    string test = "test";
+    return test;
+}
 
 
 
@@ -58,36 +81,59 @@ int main(){
     cin >> n >> m >> k >> q;
     
 
-    for (int i = 0; i< n; i++){
-
-        string nCol; // Nombre de colonia
-        int x, y;
-        bool isCentral;
-        cin >> nCol >> x >> y >> isCentral;
-    }
-    
-    for (int i = 0; i< m; i++){
-        string conCol1;
-        string conCol2;
-        int cost;
-        cin >> conCol1 >> conCol2 >> cost; // cLen can input as null aka " "
-    
+    vector<Colony> colonies(n);
+    for (int i = 0; i < n; i++) {
+        cin >> colonies[i].name >> colonies[i].x >> colonies[i].y >> colonies[i].isCentral;
     }
 
-
-    for (int i = 0; i< k; i++){
-        string conCol1;
-        string conCol2;
-        cin >> conCol1 >> conCol2; // cLen can input as null aka " "
-    }
-    for (int i = 0; i< q; i++){
-        string newCol;
-        int x, y;
-        cin >> newCol >> x >> y;
+    vector<Conexion> conexiones(m);
+    for (int i = 0; i < m; i++) {
+        cin >> conexiones[i].colony1 >> conexiones[i].colony2 >> conexiones[i].cost;
+        conexiones[i].isNewCabling = false; // Por defecto, no es nuevo cableado
     }
 
     
-    
+    for (int i = 0; i < k; i++) {
+        string col1, col2;
+        cin >> col1 >> col2;
+        // Marcar las conexiones como nuevo cableado
+        auto it = find_if(conexiones.begin(), conexiones.end(), [&](const Conexion& c) {
+            return (c.colony1 == col1 && c.colony2 == col2) || (c.colony1 == col2 && c.colony2 == col1);
+        });
+        if (it != conexiones.end()) {
+            it->isNewCabling = true;
+        }
+    }
+
+    vector<Colony> newColonies(q);
+    for (int i = 0; i < q; i++) {
+        cin >> newColonies[i].name >> newColonies[i].x >> newColonies[i].y;
+        newColonies[i].isCentral = false;  // Asumiendo que las nuevas colonias no son centrales
+    }
+
+
+
+
+    ofstream outputFile("checking2.txt");
+    if (outputFile.is_open()) {
+        outputFile << "-------------------\n";
+        outputFile << "1 - Cableado óptimo de nueva conexión.\n";
+        outputFile << MST(conexiones) << "\n";
+        outputFile << "-------------------\n";
+        outputFile << "2 - La ruta óptima.\n";
+        outputFile << TSP(colonies) << "\n";
+        outputFile << "-------------------\n";
+        outputFile << "3 - Caminos más cortos entre centrales.\n";
+        outputFile << FloydWarshall(colonies, conexiones) << "\n";
+        outputFile << "-------------------\n";
+        outputFile << "4 - Conexión de nuevas colonias.\n";
+        outputFile << connectNewColonies(colonies, newColonies) << "\n";
+        outputFile << "-------------------\n";
+        outputFile.close();
+    } else {
+        cout << "Failed to open the output file.\n";
+        return 1;
+    }            
 
 
     return 0;
