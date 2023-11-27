@@ -1,13 +1,21 @@
 -------------------
 1 - Cableado óptimo de nueva conexión.
-test
+Tecnologico - AltaVista 15
+LindaVista - Roma 17
+Roma - AltaVista 18
+Costo Total: 50
+
 -------------------
 2 - La ruta óptima.
-test
+Purisima - Roma - AltaVista - Purisima
+La Ruta Óptima tiene un costo total de: 148
 -------------------
 3 - Caminos más cortos entre centrales.
-test
+LindaVista - LindaVista - Roma - AltaVista - Tecnologico (50)
+
 -------------------
 4 - Conexión de nuevas colonias.
-test
+Independencia debe conectarse con Purisima
+Roble debe conectarse con AltaVista
+
 -------------------
